@@ -18,6 +18,8 @@ const newsSchema = new Schema({
         autoIndex: false
     });
 
+newsSchema.virtual('id').get(function () { });
+
 // Ensure virtual fields are serialised.
 newsSchema.set('toJSON', {
     virtuals: true
