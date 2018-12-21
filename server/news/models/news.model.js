@@ -1,39 +1,32 @@
 const mongoose = require('mongoose');
-mongoose.connect(global.config.db_uri, {useNewUrlParser: true});
 const Schema = mongoose.Schema;
 const R = require('ramda');
 const _links = R.pluck('link');
 
+mongoose.connect(global.config.db_uri, { useNewUrlParser: true });
+
 const newsSchema = new Schema({
     creator: String,
     title: String,
-    link: {type: String, unique: true},
+    link: { type: String, unique: true },
     pubDate: String,
     content: String,
     guid: String,
-    categories: [{type: String}],
+    categories: [{ type: String }],
     isoDate: Date,
-},{
-  autoIndex : false
-});
-
-newsSchema.virtual('id').get(function () {
-    // return this._id.toHexString();
-});
+}, {
+        autoIndex: false
+    });
 
 // Ensure virtual fields are serialised.
 newsSchema.set('toJSON', {
     virtuals: true
 });
 
-newsSchema.findById = function (cb) {
-    return this.model('News').find({id: this.id}, cb);
-};
-
 const News = mongoose.model('News', newsSchema);
 
 exports.findById = (id) => {
-    return News.findById({_id: id})
+    return News.findById({ _id: id })
         .then((result) => {
             result = result.toJSON();
             delete result._id;
@@ -49,7 +42,7 @@ exports.createNews = (newsData) => {
 
 exports.list = (perPage, page) => {
     return new Promise((resolve, reject) => {
-        News.find().select('-__v').sort({isoDate: -1})
+        News.find().select('-__v').sort({ isoDate: -1 })
             .limit(perPage)
             .skip(perPage * page)
             .exec(function (err, news) {
@@ -64,7 +57,7 @@ exports.list = (perPage, page) => {
 
 exports.newLinks = (links) => {
     return new Promise((resolve, reject) => {
-        News.find({link: {$in: links}})
+        News.find({ link: { $in: links } })
             .exec(function (err, news) {
                 if (err) {
                     reject(err);
@@ -77,7 +70,7 @@ exports.newLinks = (links) => {
 
 exports.insertAll = (items) => {
     return new Promise((resolve, reject) => {
-        News.insertMany(items, (err,re) => {
+        News.insertMany(items, (err, re) => {
             if (err) {
                 reject(err)
             } else {
@@ -86,7 +79,6 @@ exports.insertAll = (items) => {
         })
     });
 };
-
 
 exports.count = (links) => {
     return new Promise((resolve, reject) => {
