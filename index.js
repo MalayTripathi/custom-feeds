@@ -1,9 +1,8 @@
-const config = require('./common/config/env.config.js');
-
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-require('dotenv').config()
+global.config = require('./config');
 const NewsRouter = require('./news/routes.config');
 const watcher = require('./watcher');
 
@@ -23,9 +22,9 @@ app.use(function (req, res, next) {
 app.use(bodyParser.json());
 NewsRouter.routesConfig(app);
 
-const server = app.listen(config.port, function () {
-    console.log('app listening at port %s', config.port);
+const server = app.listen(process.env.PORT, function () {
+    console.log('App listening on port %s', process.env.PORT);
 });
 
-const io = require('socket.io')(server, { path: '/coindesk'});
-global.io = io
+const io = require('socket.io')(server, { path: '/latestnews'});
+global.io = io;

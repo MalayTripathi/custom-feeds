@@ -3,7 +3,7 @@ import axios from 'axios';
 import openSocket from 'socket.io-client';
 import 'assets/css/boot.css';
 import moment from 'moment';
-const socket = openSocket(process.env.REACT_APP_SOCKET, {path:'/coindesk'});
+const socket = openSocket(process.env.REACT_APP_SOCKET, {path:'/latestnews'});
 
 class App extends Component {
   constructor(props) {

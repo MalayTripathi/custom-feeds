@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true});
+mongoose.connect(global.config.db_uri, {useNewUrlParser: true});
 const Schema = mongoose.Schema;
 const R = require('ramda');
 const _links = R.pluck('link');
