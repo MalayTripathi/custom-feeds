@@ -7,7 +7,7 @@ const _links = R.pluck('link');
 setInterval(
 	async () => {
 		try {
-			let feed = await parser.parseURL(config.feed1);
+			let feed = await parser.parseURL(config.coindesk);
 
 			let links = _links(feed.items)
 			let matched = await NewsModel.newLinks(links)
@@ -23,14 +23,14 @@ setInterval(
 				})
 			}
 		} catch (e) {
-			console.log(e)
+			console.log('Error in Coindesk Feed', e);
 		}
 }, 60000);
 
 setInterval(
 	async () => {
 		try {
-			let feed = await parser.parseURL(config.feed2);
+			let feed = await parser.parseURL(config.cointelegraph);
 
 			let links = _links(feed.items)
 			let matched = await NewsModel.newLinks(links)
@@ -46,14 +46,14 @@ setInterval(
 				})
 			}
 		} catch (e) {
-			console.log(e)
+			console.log('Error in Cointelegraph Feed', e);
 		}
 }, 60000);
 
 setInterval(
 	async () => {
 		try {
-			let feed = await parser.parseURL(config.feed3);
+			let feed = await parser.parseURL(config.bitcoin_com);
 
 			let links = _links(feed.items)
 			let matched = await NewsModel.newLinks(links)
@@ -69,14 +69,14 @@ setInterval(
 				})
 			}
 		} catch (e) {
-			console.log(e)
+			console.log('Error in Bitcoin.com Feed', e);
 		}
 }, 60000);
 
 setInterval(
 	async () => {
 		try {
-			let feed = await parser.parseURL(config.feed4);
+			let feed = await parser.parseURL(config.newsbtc);
 
 			let links = _links(feed.items)
 			let matched = await NewsModel.newLinks(links)
@@ -92,14 +92,14 @@ setInterval(
 				})
 			}
 		} catch (e) {
-			console.log(e)
+			console.log('Error in News BTC Feed', e);
 		}
 }, 60000);
 
 setInterval(
 	async () => {
 		try {
-			let feed = await parser.parseURL(config.feed5);
+			let feed = await parser.parseURL(config.walletinvestor);
 
 			let links = _links(feed.items)
 			let matched = await NewsModel.newLinks(links)
@@ -115,14 +115,14 @@ setInterval(
 				})
 			}
 		} catch (e) {
-			console.log(e)
+			console.log('Error in Wallet Investor Feed', e);
 		}
 }, 60000);
 
 setInterval(
 	async () => {
 		try {
-			let feed = await parser.parseURL(config.feed6);
+			let feed = await parser.parseURL(config.reddit);
 
 			let links = _links(feed.items)
 			let matched = await NewsModel.newLinks(links)
@@ -138,14 +138,14 @@ setInterval(
 				})
 			}
 		} catch (e) {
-			console.log(e)
+			console.log('Error in Reddit Feed', e);
 		}
 }, 60000);
 
 setInterval(
 	async () => {
 		try {
-			let feed = await parser.parseURL(config.feed7);
+			let feed = await parser.parseURL(config.bitcoin_magazine);
 
 			let links = _links(feed.items)
 			let matched = await NewsModel.newLinks(links)
@@ -161,14 +161,14 @@ setInterval(
 				})
 			}
 		} catch (e) {
-			console.log(e)
+			console.log('Error in Bitcoin Magazine Feed', e);
 		}
 }, 60000);
 
 setInterval(
 	async () => {
 		try {
-			let feed = await parser.parseURL(config.feed8);
+			let feed = await parser.parseURL(config.ethereum_world_news);
 
 			let links = _links(feed.items)
 			let matched = await NewsModel.newLinks(links)
@@ -184,6 +184,6 @@ setInterval(
 				})
 			}
 		} catch (e) {
-			console.log(e)
+			console.log('Error in Ethereum World News Feed', e);
 		}
 }, 60000);
