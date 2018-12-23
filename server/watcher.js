@@ -187,3 +187,164 @@ setInterval(
 			console.log('Error in Ethereum World News Feed', e);
 		}
 }, 60000);
+
+setInterval(
+	async () => {
+		try {
+			let feed = await parser.parseURL(config.minergate);
+
+			let links = _links(feed.items)
+			let matched = await NewsModel.newLinks(links)
+			let uniqueItems = feed.items.filter(f => matched.indexOf(f.link) === -1).slice().reverse()
+			if(uniqueItems.length > 0) {
+				const io = global.io
+				let result = await NewsModel.insertAll(uniqueItems)
+				uniqueItems.map(item => {
+					delete item.__v
+					delete item.contentSnippet
+					delete item['dc:creator']
+					io.sockets.emit('message', item)
+				})
+			}
+		} catch (e) {
+			console.log('Error in Miner Gate News Feed', e);
+		}
+}, 60000);
+
+setInterval(
+	async () => {
+		try {
+			let feed = await parser.parseURL(config.kraken);
+
+			let links = _links(feed.items)
+			let matched = await NewsModel.newLinks(links)
+			let uniqueItems = feed.items.filter(f => matched.indexOf(f.link) === -1).slice().reverse()
+			if(uniqueItems.length > 0) {
+				const io = global.io
+				let result = await NewsModel.insertAll(uniqueItems)
+				uniqueItems.map(item => {
+					delete item.__v
+					delete item.contentSnippet
+					delete item['dc:creator']
+					io.sockets.emit('message', item)
+				})
+			}
+		} catch (e) {
+			console.log('Error in Kraken News Feed', e);
+		}
+}, 60000);
+
+setInterval(
+	async () => {
+		try {
+			let feed = await parser.parseURL(config.finance_maganates);
+
+			let links = _links(feed.items)
+			let matched = await NewsModel.newLinks(links)
+			let uniqueItems = feed.items.filter(f => matched.indexOf(f.link) === -1).slice().reverse()
+			if(uniqueItems.length > 0) {
+				const io = global.io
+				let result = await NewsModel.insertAll(uniqueItems)
+				uniqueItems.map(item => {
+					delete item.__v
+					delete item.contentSnippet
+					delete item['dc:creator']
+					io.sockets.emit('message', item)
+				})
+			}
+		} catch (e) {
+			console.log('Error in Finance Maganates News Feed', e);
+		}
+}, 60000);
+
+setInterval(
+	async () => {
+		try {
+			let feed = await parser.parseURL(config.coinsutra);
+
+			let links = _links(feed.items)
+			let matched = await NewsModel.newLinks(links)
+			let uniqueItems = feed.items.filter(f => matched.indexOf(f.link) === -1).slice().reverse()
+			if(uniqueItems.length > 0) {
+				const io = global.io
+				let result = await NewsModel.insertAll(uniqueItems)
+				uniqueItems.map(item => {
+					delete item.__v
+					delete item.contentSnippet
+					delete item['dc:creator']
+					io.sockets.emit('message', item)
+				})
+			}
+		} catch (e) {
+			console.log('Error in Coin Sutra News Feed', e);
+		}
+}, 60000);
+
+setInterval(
+	async () => {
+		try {
+			let feed = await parser.parseURL(config.coingape);
+
+			let links = _links(feed.items)
+			let matched = await NewsModel.newLinks(links)
+			let uniqueItems = feed.items.filter(f => matched.indexOf(f.link) === -1).slice().reverse()
+			if(uniqueItems.length > 0) {
+				const io = global.io
+				let result = await NewsModel.insertAll(uniqueItems)
+				uniqueItems.map(item => {
+					delete item.__v
+					delete item.contentSnippet
+					delete item['dc:creator']
+					io.sockets.emit('message', item)
+				})
+			}
+		} catch (e) {
+			console.log('Error in Coin Gape News Feed', e);
+		}
+}, 60000);
+
+setInterval(
+	async () => {
+		try {
+			let feed = await parser.parseURL(config.cryptopotato);
+
+			let links = _links(feed.items)
+			let matched = await NewsModel.newLinks(links)
+			let uniqueItems = feed.items.filter(f => matched.indexOf(f.link) === -1).slice().reverse()
+			if(uniqueItems.length > 0) {
+				const io = global.io
+				let result = await NewsModel.insertAll(uniqueItems)
+				uniqueItems.map(item => {
+					delete item.__v
+					delete item.contentSnippet
+					delete item['dc:creator']
+					io.sockets.emit('message', item)
+				})
+			}
+		} catch (e) {
+			console.log('Error in Crypto Potato News Feed', e);
+		}
+}, 60000);
+
+setInterval(
+	async () => {
+		try {
+			let feed = await parser.parseURL(config.bitcoin_exchange);
+			
+			let links = _links(feed.items)
+			let matched = await NewsModel.newLinks(links)
+			let uniqueItems = feed.items.filter(f => matched.indexOf(f.link) === -1).slice().reverse()
+			if(uniqueItems.length > 0) {
+				const io = global.io
+				let result = await NewsModel.insertAll(uniqueItems)
+				uniqueItems.map(item => {
+					delete item.__v
+					delete item.contentSnippet
+					delete item['dc:creator']
+					io.sockets.emit('message', item)
+				})
+			}
+		} catch (e) {
+			console.log('Error in Bitcoin Exchange News Feed', e);
+		}
+}, 60000);
