@@ -13,7 +13,7 @@ exports.list = async (req, res) => {
         }
     }
     let total = await NewsModel.count();
-    let sources = 15;
+    let sources = 16;
     NewsModel.list(limit, page).then((result) => {
         let newestStory = (moment(new Date()).diff(result[0].isoDate)/(3600000)).toFixed(2) + ' Hours';
         let oldestStory = (moment(new Date()).diff(result[result.length-1].isoDate)/(3600000)).toFixed(2) + ' Hours';
