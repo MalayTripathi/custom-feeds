@@ -16,3 +16,5 @@ config.coinsutra = 'https://coinsutra.com/blog/feed';
 config.coingape= 'https://coingape.com/feed';
 config.cryptopotato = 'https://cryptopotato.com/feed';
 config.bitcoin_exchange = 'https://bitcoinexchangeguide.com/feed';
+config.reuters = "http://feeds.reuters.com/reuters/INtopNews";
+config.keywords = ["bitcoin", "ethereum", "blockchain", "crypto", "smart contract", "decentralized", "Bitcoin", "Ethereum", "Blockchain", "Crypto", "Smart Contract", "Decentralized"];
