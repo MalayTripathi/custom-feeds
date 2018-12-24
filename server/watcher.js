@@ -375,4 +375,4 @@ setInterval(
 		} catch (e) {
 			console.log('Error in Reuters News Feed', e);
 		}
-}, 6000);
+}, 60000);
