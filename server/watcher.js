@@ -45,4 +45,4 @@ setInterval(
         } catch (e) {
             console.log('Error: ', e);
         }
-}, 30000);
+}, 60000);
